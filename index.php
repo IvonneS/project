@@ -24,8 +24,8 @@ include 'functions.php';
                <option value=" "> Select one </option>  
             </select>
             <br><br>
-            Price: From: <input type="text" name="priceFrom" size="5"/> 
-             To: <input type="text" name="priceTo" size="5"/>
+            Price: From: <input type="text" name="priceFrom" size="6"/> 
+             To: <input type="text" name="priceTo" size="6"/>
             <br><br>
             <input type="submit" name="searchForm" value="Search" />
         </form>
