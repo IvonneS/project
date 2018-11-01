@@ -1,8 +1,13 @@
 <?php
+session_start();
 include 'functions.php';
-    if(isset($_GET['query'])){
-        //Get access to API HERE
+include '../cst336/inc/dbConnection.php';
+$dbConn = startConnection("");//put in parentesis database Name
+
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
     }
+    
 
 ?>
 
@@ -16,7 +21,13 @@ include 'functions.php';
          <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form method = "GET">
+       <div>
+            <ul class='bar'>
+                        <li><a href='index.php'>Home</a></li>
+                        <li><a href='cart.php'>
+            </ul>
+        </div>    
+            <form method = "GET">
               Product: <input type="text" name="productName" placeholder="Product keyword" /> <br />
             <br>
             Category: 
@@ -24,10 +35,10 @@ include 'functions.php';
                <option value=" "> Select one </option>  
             </select>
             <br><br>
-            Price: From: <input type="text" name="priceFrom" size="6"/> 
+            Price:  From: <input type="text" name="priceFrom" size="6"/> 
              To: <input type="text" name="priceTo" size="6"/>
             <br><br>
-            <input type="submit" name="searchForm" value="Search" />
+            <input type="submit" name="searchForm" value="SEARCH" />
         </form>
     </body>
 </html>
