@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'functions.php';
-include '../cst336/inc/dbConnection.php';
+//include '../cst336/inc/dbConnection.php';
 $dbConn = startConnection("");//put in parentesis database Name
 
     if (!isset($_SESSION['cart'])){
@@ -24,7 +24,7 @@ $dbConn = startConnection("");//put in parentesis database Name
        <div>
             <ul class='bar'>
                         <li><a href='index.php'>Home</a></li>
-                        <li><a href='cart.php'>
+                        <li><a href='cart.php'>Cart</a></li>
             </ul>
         </div>    
             <form method = "GET">
