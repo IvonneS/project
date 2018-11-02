@@ -1,14 +1,6 @@
 <?php
 session_start();
 include 'functions.php';
-//include '../cst336/inc/dbConnection.php';
-$dbConn = startConnection("");//put in parentesis database Name
-
-    if (!isset($_SESSION['cart'])){
-        $_SESSION['cart'] = array();
-    }
-    
-
 ?>
 
 
@@ -28,11 +20,12 @@ $dbConn = startConnection("");//put in parentesis database Name
             </ul>
         </div>    
             <form method = "GET">
-              Product: <input type="text" name="productName" placeholder="Product keyword" /> <br />
+              Name: <input type="text" name="MovieName" placeholder="Movie name or description" /> <br />
             <br>
-            Category: 
-            <select name="category">
-               <option value=" "> Select one </option>  
+            Genre: 
+            <select name="genre">
+               <option value=" "> Select one </option> 
+               <?=displayGenre()?>
             </select>
             <br><br>
             Price:  From: <input type="text" name="priceFrom" size="6"/> 
