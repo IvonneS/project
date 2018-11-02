@@ -2,36 +2,36 @@
 session_start();
 include 'functions.php';
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        
-        <h1>WELCOME</h1>
-         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <title>Products Page</title>
+         
     </head>
     <body>
-       <div>
-            <ul class='bar'>
-                        <li><a href='index.php'>Home</a></li>
-                        <li><a href='cart.php'>Cart</a></li>
+            <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#cart">Cart</a></li>
             </ul>
-        </div>    
-            <form method = "GET">
-              Name: <input type="text" name="MovieName" placeholder="Movie name or description" /> <br />
+            <br> <br>
+            <form method = "GET" id="forms">
+              Movie: <input type="text" name="MovieName" placeholder="name or description" /> <br />
             <br>
             Genre: 
             <select name="genre">
                <option value=" "> Select one </option> 
-               <?=displayGenre()?>
+            
             </select>
             <br><br>
             Price:  From: <input type="text" name="priceFrom" size="6"/> 
              To: <input type="text" name="priceTo" size="6"/>
+            <br>
+            Low to High Price <input type="radio" name="orderBy" value="LToH" >
+            High to Low Price<input type="radio" name="orderBy" value="HToL" ><br>
+            Alphabetical Order <input type="radio" name="orderBy" value="alphabetic">
             <br><br>
-            <input type="submit" name="searchForm" value="SEARCH" />
+            <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>
     </body>
 </html>
