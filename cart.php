@@ -25,17 +25,15 @@
 <html>
     <head>
        <title>Shopping Cart</title>
-        
-        <h1>WELCOME</h1>
          <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
        <div>
-            <ul class='bar'>
+            <ul>
                         <li><a href='index.php'>Home</a></li>
-                        <li><a href='cart.php'> Cart </a></li>
+                        <li><a class="active" href='cart.php'> Cart </a></li>
             </ul>
         </div>    
-            
+             <h1>WELCOME</h1>
     </body>
 </html>

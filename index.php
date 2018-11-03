@@ -9,27 +9,27 @@ include 'functions.php';
         <title>Products Page</title>
          
     </head>
-    <body>
+    <body id="background1">
             <ul>
-                <li><a class="active" href="#home">Home</a></li>
-                <li><a href="#cart">Cart</a></li>
+                <li><a class="active" href="index.php">Home</a></li>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
             <br> <br>
             <form method = "GET" id="forms">
-              Movie: <input type="text" name="MovieName" placeholder="name or description" /> <br />
+            <b> Movie: </b><input type="text" name="MovieName" placeholder="name or description" /> <br />
             <br>
-            Genre: 
+            <b> Genre:</b> 
             <select name="genre">
                <option value=" "> Select one </option> 
             
             </select>
             <br><br>
-            Price:  From: <input type="text" name="priceFrom" size="6"/> 
-             To: <input type="text" name="priceTo" size="6"/>
+            <b>Price:  From: </b> <input type="text" name="priceFrom" size="6"/> 
+            <b> To: </b> <input type="text" name="priceTo" size="6"/>
             <br>
-            Low to High Price <input type="radio" name="orderBy" value="LToH" >
-            High to Low Price<input type="radio" name="orderBy" value="HToL" ><br>
-            Alphabetical Order <input type="radio" name="orderBy" value="alphabetic">
+            <b>Low to High Price</b> <input type="radio" name="orderBy" value="LToH" >
+            <b>High to Low Price</b><input type="radio" name="orderBy" value="HToL" ><br>
+            <b>Alphabetical Order </b><input type="radio" name="orderBy" value="alphabetic">
             <br><br>
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>

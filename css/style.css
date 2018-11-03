@@ -1,4 +1,12 @@
+body{
+    
+}
+#background1{
+    background-image: url("../img/pic2.jpg");
+    font-family: serif;
+}
 ul {
+    font-size: 22px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,10 +35,12 @@ li a:hover {
 }
 #forms{
     text-align: center;
+     font-size: 22px;
+
 }
 #b1{
     width: 100px;
-    height: 25px;
+    height: 30px;
     font-family: serif;
     font-size: 1em;
     border-radius: 15px;
