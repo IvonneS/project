@@ -21,6 +21,10 @@ include 'functions.php';
             <b> Genre:</b> 
             <select name="genre">
                <option value=" "> Select one </option> 
+               <?php 
+               categoryDisplayMovie();
+               categoryDisplayGame();
+               ?>
             
             </select>
             <br><br>

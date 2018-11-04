@@ -1,6 +1,6 @@
 <?php
 include 'inc/dbConnection.php';
-$dbConn = startConnection("");//put in parentesis database Name
+$dbConn = startConnection("project2");//put in parentesis database Name
 function displayGenre(){
     global $dbConn;
     
@@ -95,5 +95,35 @@ function displaySeachResults(){
         echo "</table>";
         }
     }
+    
+    function categoryDisplayMovie() {
+        global $dbConn;
+        
+       $sql = "SELECT DISTINCT genre FROM movies ORDER BY genre ASC";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($records as $record){
+           echo "<option value = 'Movies: ".$record['genre']."'> Movies: " .$record["genre"] ."</option>";
+        }
+    }
+    
+    function categoryDisplayGame() {
+          global $dbConn;
+        
+       $sql = "SELECT DISTINCT genre FROM video_games ORDER BY genre ASC";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($records as $record){
+           echo "<option value = 'Video Games: ".$record['genre']."'> Video Games: " .$record["genre"] ."</option>";
+        }
+    }
+    
+
+        
+    
 
 ?>
