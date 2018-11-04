@@ -1,5 +1,5 @@
 <?php
-include '../cst336/inc/dbConnection.php';
+include 'inc/dbConnection.php';
 $dbConn = startConnection("");//put in parentesis database Name
 function displayGenre(){
     global $dbConn;
