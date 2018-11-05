@@ -13,6 +13,7 @@ function displayGenre(){
         echo "<option value='".$record['name']."'>" . $record['name'] . "</option>";
     }
 }
+
 function displaySeachResults(){
         
         global $dbConn;
@@ -135,72 +136,6 @@ function displaySeachResults(){
             }
             
         echo "</table>";
-        }
-    }
-    
-    function categoryDisplayMovie() {
-        global $dbConn;
-        
-       $sql = "SELECT DISTINCT genre FROM movies ORDER BY genre ASC";
-        $stmt = $dbConn->prepare($sql);
-        $stmt->execute();
-        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        foreach($records as $record){
-           echo "<option value = 'Movies: ".$record['genre']."'> Movies: " .$record["genre"] ."</option>";
-        }
-    }
-    
-    function categoryDisplayGame() {
-          global $dbConn;
-        
-       $sql = "SELECT DISTINCT genre FROM video_games ORDER BY genre ASC";
-        $stmt = $dbConn->prepare($sql);
-        $stmt->execute();
-        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        foreach($records as $record){
-           echo "<option value = 'Video Games: ".$record['genre']."'> Video Games: " .$record["genre"] ."</option>";
-        }
-    }
-    
-    function categoryExplain() {
-        global $dbConn;
-        
-       $sql = "SELECT DISTINCT name FROM Genre ORDER BY name ASC";
-        $stmt = $dbConn->prepare($sql);
-        $stmt->execute();
-        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        foreach($records as $record){
-           echo "<option value = 'Explanation: ".$record['name']."'> Explanation: " .$record["name"] ."</option>";
-        }
-    }
-    
-
-
-    function findMatches() {
-        global $dbConn;
-        $sql = "";
-       // if($_GET["genre"] == "Explanation") {
-                        //code found from https://stackoverflow.com/questions/21226166/php-header-location-redirect-not-working/21229246
-
-         //echo "<script type='text/javascript'> document.location = 'explanation.php'; </script>";
-         //break;
-        
-        if($_GET['genre'] == "Movies: action"){
-            $sql = "SELECT * FROM movies where name LIKE '%" . $_GET['MovieName'] . "%' AND genre = 'action'";
-        }
-        if($sql != ""){
-            echo "IN HERE!!!!";
-        $stmt = $dbConn->prepare($sql);
-        $stmt->execute();
-        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        foreach($records as $record){
-        echo $record["name"];
-        echo "<br>";
-        }
         }
     }
     
