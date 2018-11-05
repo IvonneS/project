@@ -122,7 +122,7 @@ function displaySeachResults(){
                     echo "<tr>";
                     echo "<td><img src='$itemImage'></td>";
                     echo "<td><h4>$itemName</h4></td>";
-                    echo "<td><h4>$itemPrice</h4></td>";
+                    echo "<td><h4> $ $itemPrice</h4></td>";
                     
                     //UPDATE VARIABLES TO 
                     echo "<forum method='post'>";
