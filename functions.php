@@ -21,7 +21,7 @@ function displaySeachResults(){
             
             if($_GET['searchFor'] == 'movies'){
             
-                echo "<h3>Moives Found: </h3>";
+                echo "<h3>Movies Found: </h3>";
                 
                 $namedParameters = array();
                 
@@ -117,28 +117,20 @@ function displaySeachResults(){
                     $itemPrice = $record['price'];
                     
                     
-                    //CHANGE VALUES TO CURRENT DB
+                    //Display Items
                     echo "<tr>";
                     echo "<td><img src='$itemImage'></td>";
                     echo "<td><h4>$itemName</h4></td>";
                     echo "<td><h4>$itemPrice</h4></td>";
                     
-                    //UPDATE VARIABLES TO 
+                    //Button to add to cart
                     echo "<forum method='post'>";
                     echo "<input type='hidden' name='itemName' value='$itemName'>";
-                    echo "<td><button class='btn btn-warning'>Add</button></td>";
-                    echo "</forum>";
-                    
-                    echo "<tr>";
-                    
-                    echo "<forum method='post'>";
-                    echo "<input type='hidden' name='itemName' value'$itemName'>";
-                    echo "<input type='hidden' name='itemId' value'$itemId'>";
-                    echo "<input type='hidden' name='itemImage' value'$itemImage'>";
-                    echo "<input type='hidden' name='itemPrice' value'$itemPrice'>";
-                    
+                    echo "<input type='hidden' name='itemImage' value='$itemImage'>";
+                    echo "<input type='hidden' name='itemPrice' value='$itemPrice'>";
                     echo "<td><button class='btn btn-warning'>ADD</button></td>";
                     echo "</forum>";
+                    echo "</tr>";
                 }
             }
             
