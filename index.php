@@ -21,8 +21,8 @@ include 'functions.php';
             <form method = "GET" id="forms">
             <b> Movie Or Video Game: </b><input type="text" name="MovieName" placeholder="name" /> <br />
             <br>
-            <b>Movies</b> <input type="radio" name="searchFor" value="movies" >
-            <b>Video Games</b><input type="radio" name="searchFor" value="video_games" ><br>
+            <b>Movies</b> <input type="radio" name="searchFor" value="movies"<?php if($_GET["searchFor"] == 'movies') {echo 'checked';}?>/>
+            <b>Video Games</b><input type="radio" name="searchFor" value="video_games"<?php if($_GET["searchFor"] == 'video_games') {echo 'checked';}?>/><br>
             <br>
             <b> Genre:</b> 
             <select name="genre">
@@ -37,9 +37,9 @@ include 'functions.php';
             <b>Price:  From: </b> <input type="number" name="priceFrom" size="6"/> 
             <b> To: </b> <input type="number" name="priceTo" size="6"/>
             <br>
-            <b>Low to High Price</b> <input  type="radio"  name="orderBy" value="LToH" >
-            <b>High to Low Price</b><input   type="radio"   name="orderBy" value="HToL" ><br>
-            <b>Alphabetical Order </b><input type="radio" name="orderBy" value="alphabetic">
+            <b>Low to High Price</b> <input  type="radio"  name="orderBy" value="LToH"<?php if($_GET["orderBy"] == 'LToH') {echo 'checked';}?>/>
+            <b>High to Low Price</b><input   type="radio"   name="orderBy" value="HToL"<?php if($_GET["orderBy"] == 'HToL') {echo 'checked';}?>/><br>
+            <b>Alphabetical Order </b><input type="radio" name="orderBy" value="alphabetic" <?php if($_GET["orderBy"] == 'alphabetic') {echo 'checked';}?>/>
             <br><br>
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>
@@ -55,5 +55,5 @@ include 'functions.php';
     </body>
 </html>
 <?php
-findMatches();
+//findMatches();
 ?>
