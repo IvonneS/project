@@ -72,3 +72,10 @@ li a:hover {
 #linkBack {
     text-align: center;
 }
+#out_table, th, td{
+    border: 1px solid black 
+}
+
+th, td {
+    padding: 15px;
+}

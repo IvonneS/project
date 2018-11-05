@@ -10,7 +10,12 @@ function displayGenre(){
     $stmt->execute();
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($records as $record) {
-        echo "<option value='".$record['name']."'>" . $record['name'] . "</option>";
+        echo "<option value='" .$record['name']. "'";
+        
+        if($_GET['genre'] == $record['name']){
+            echo "selected = 'selected'";
+        }
+        echo ">" .$record['name']. "</option><br />";
     }
 }
 
@@ -108,20 +113,28 @@ function displaySeachResults(){
             
             if(isset($_GET['searchFor'])){
                 //Output results
-                echo "<table class='table'>";
+                echo "<table id='out_table' align='center'>";
+                echo "<tr>";
+                echo "<th> Poster</th>";
+                echo "<th> Title </th>";
+                echo "<th> Genre </th>";
+                echo "<th> Price </th>";
+                echo "<th> Add to Cart </th>";
+                echo "</tr>";
                 foreach($records as $record){
                 
                     //Assign values to variables
-                    $movieName = $record['name'];
+                    $itemName = $record['name'];
                     $genre = $record['genre'];
                     $itemImage = $record['image'];
                     $itemPrice = $record['price'];
-                    
+
                     
                     //Display Items
                     echo "<tr>";
                     echo "<td><img src='$itemImage'></td>";
                     echo "<td><h4>$itemName</h4></td>";
+                    echo "<td><h4>$genre</h4></td>";
                     echo "<td><h4>$itemPrice</h4></td>";
                     
                     //Button to add to cart
@@ -161,9 +174,4 @@ function displaySeachResults(){
         }
         echo "</table>";
     }
-
-    
-
-    
-
 ?>
