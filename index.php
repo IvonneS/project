@@ -12,22 +12,26 @@ include 'functions.php';
     <body id="background1">
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
-                <span class='glyphicon glyphicon-shooping-cart' aria-hidden='true'>
+                
+                <!--<span class='glyphicon glyphicon-shooping-cart' aria-hidden='true'>-->
                 <li><a href="cart.php">Cart</a></li>
+                <li><a href = "explanation.php">Explanation</a></li>
             </ul>
             <br> <br>
             <form method = "GET" id="forms">
             <b> Movie Or Video Game: </b><input type="text" name="MovieName" placeholder="name" /> <br />
             <br>
+            <b>Movies</b> <input type="radio" name="searchFor" value="movies" >
+            <b>Video Games</b><input type="radio" name="searchFor" value="video_games" ><br>
+            <br>
             <b> Genre:</b> 
             <select name="genre">
                <option value=" "> Select one </option> 
                <?php
-               categoryDisplayMovie();
-               categoryDisplayGame();
-              // categoryExplain();
+            //   categoryDisplayMovie();
+            //   categoryDisplayGame();
+               displayGenre();
                ?>
-               <option>Explanation</option>
             </select>
             <br><br>
             <b>Price:  From: </b> <input type="number" name="priceFrom" size="6"/> 
@@ -39,9 +43,17 @@ include 'functions.php';
             <br><br>
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>
+        <?php
+            if(isset($_GET['searchForm'])){
+                echo "<hr>";
+                echo "<div id='output'>";
+                displaySeachResults();
+                echo "</div>";
+            }
+        ?>
+
     </body>
 </html>
-
 <?php
 findMatches();
 ?>

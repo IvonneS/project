@@ -1,96 +1,147 @@
 <?php
 include 'inc/dbConnection.php';
-$dbConn = startConnection("project2");//put in parentesis database Name
-$explained;
+$dbConn = startConnection("project2");
 
 function displayGenre(){
     global $dbConn;
     
-    $sql = "SELECT * FROM  ORDER BY ";
+    $sql = "SELECT * FROM Genre ORDER BY name";
     $stmt = $dbConn->prepare($sql);
     $stmt->execute();
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($records as $record) {
-        echo "<option value='".$record['']."'>" . $record[''] . "</option>";
+        echo "<option value='".$record['name']."'>" . $record['name'] . "</option>";
     }
 }
 function displaySeachResults(){
         
         global $dbConn;
-        
+
         if(isset($_GET['searchForm'])){
             
-            echo "<h3>Moives Found: </h3>";
+            if($_GET['searchFor'] == 'movies'){
             
-            $namedParameters = array();
-            
-            $sql = "SELECT * FROM  WHERE 1"; //ADD DATABASE NAME
-            
-            //Check input fields
-            if(!empty($_GET['MovieName'])){
-                $sql .= " AND productName OR productDescription LIKE :MovieName"; //CHANGE SQL SEARCH VALUES
-                $namedParameters[':MovieName'] = "%" .$_GET['MovieName']. "%";
-            }
-            
-            if(!empty($_GET['genre'])){
-                $sql .= " AND catId = :genre"; //CHANGE SQL SEARCH VALUES
-                $namedParameters[':genre'] = $_GET['genre'];
-            }
-            
-            if(!empty($_GET['priceFrom']) && !empty($_GET['priceTo'])){
-                $sql .= " AND price >= :priceFrom"; //CHANGE SQL SEARCH VALUES
-                $sql .= " AND price <= :priceTo"; //CHANGE SQL SEARCH VALUES
-                $namedParameters[':priceFrom'] = $_GET['priceFrom'];
-                $namedParameters[':priceTo'] = $_GET['priceTo'];
-            }
-            
-            if(isset($_GET['orderBy'])){
-                if($_GET['orderBy'] == 'price'){
-                    $sql .= " ORDER BY price"; //CHANGE SQL SEARCH VALUES
+                echo "<h3>Moives Found: </h3>";
+                
+                $namedParameters = array();
+                
+                $sql = "SELECT * FROM movies WHERE 1"; 
+                
+                //Check input fields
+                if(!empty($_GET['MovieName'])){
+                    $sql .= " AND name OR description LIKE :MovieName";
+                    $namedParameters[':MovieName'] = "%" .$_GET['MovieName']. "%";
                 }
-                else{
-                    $sql .= " ORDER BY productName"; //CHANGE SQL SEARCH VALUES
+                
+                if(!empty($_GET['genre'])){
+                    $sql .= " AND genre = :genre"; 
+                    $namedParameters[':genre'] = $_GET['genre'];
+                }
+                
+                if(!empty($_GET['priceFrom']) && !empty($_GET['priceTo'])){
+                    $sql .= " AND price >= :priceFrom"; 
+                    $sql .= " AND price <= :priceTo"; 
+                    $namedParameters[':priceFrom'] = $_GET['priceFrom'];
+                    $namedParameters[':priceTo'] = $_GET['priceTo'];
+                }
+                
+                if(isset($_GET['orderBy'])){
+                    if($_GET['orderBy'] == 'alphabetic'){
+                        $sql .= " ORDER BY name"; 
+                    }
+                    elseif($_GET['orderBy'] == 'LToH') {
+                        $sql .= " ORDER BY price DESC"; 
+                    }
+                    elseif($_GET['orderBy'] == 'HToL'){
+                        $sql .= " ORDER BY price";
+                    }
+                }
+                
+                $stmt = $dbConn->prepare($sql);
+                $stmt->execute($namedParameters);
+                $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            elseif($_GET['searchFor'] == 'video_games'){
+                
+                echo "<h3>Video Games Found: </h3>";
+                
+                $namedParameters = array();
+                
+                $sql = "SELECT * FROM video_games WHERE 1"; 
+                
+                //Check input fields
+                if(!empty($_GET['MovieName'])){
+                    $sql .= " AND name OR description LIKE :MovieName";
+                    $namedParameters[':MovieName'] = "%" .$_GET['MovieName']. "%";
+                }
+                
+                if(!empty($_GET['genre'])){
+                    $sql .= " AND genre = :genre"; 
+                    $namedParameters[':genre'] = $_GET['genre'];
+                }
+                
+                if(!empty($_GET['priceFrom']) && !empty($_GET['priceTo'])){
+                    $sql .= " AND price >= :priceFrom"; 
+                    $sql .= " AND price <= :priceTo"; 
+                    $namedParameters[':priceFrom'] = $_GET['priceFrom'];
+                    $namedParameters[':priceTo'] = $_GET['priceTo'];
+                }
+                
+                if(isset($_GET['orderBy'])){
+                    if($_GET['orderBy'] == 'alphabetic'){
+                        $sql .= " ORDER BY name"; 
+                    }
+                    elseif($_GET['orderBy'] == 'LToH') {
+                        $sql .= " ORDER BY price ASC"; 
+                    }
+                    elseif($_GET['orderBy'] == 'HToL'){
+                        $sql .= " ORDER BY price DESC";
+                    }
+                }
+                
+                $stmt = $dbConn->prepare($sql);
+                $stmt->execute($namedParameters);
+                $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            }
+            
+            if(isset($_GET['searchFor'])){
+                //Output results
+                echo "<table class='table'>";
+                foreach($records as $record){
+                
+                    //Assign values to variables
+                    $movieName = $record['name'];
+                    $genre = $record['genre'];
+                    $itemImage = $record['image'];
+                    $itemPrice = $record['price'];
+                    
+                    
+                    //CHANGE VALUES TO CURRENT DB
+                    echo "<tr>";
+                    echo "<td><img src='$itemImage'></td>";
+                    echo "<td><h4>$itemName</h4></td>";
+                    echo "<td><h4>$itemPrice</h4></td>";
+                    
+                    //UPDATE VARIABLES TO 
+                    echo "<forum method='post'>";
+                    echo "<input type='hidden' name='itemName' value='$itemName'>";
+                    echo "<td><button class='btn btn-warning'>Add</button></td>";
+                    echo "</forum>";
+                    
+                    echo "<tr>";
+                    
+                    echo "<forum method='post'>";
+                    echo "<input type='hidden' name='itemName' value'$itemName'>";
+                    echo "<input type='hidden' name='itemId' value'$itemId'>";
+                    echo "<input type='hidden' name='itemImage' value'$itemImage'>";
+                    echo "<input type='hidden' name='itemPrice' value'$itemPrice'>";
+                    
+                    echo "<td><button class='btn btn-warning'>ADD</button></td>";
+                    echo "</forum>";
                 }
             }
             
-            $stmt = $db->prepare($sql);
-            $stmt->execute($namedParameters);
-            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            //Output results
-            echo "<table class='table'>";
-            foreach($records as $record){
-            
-            //CHECK DB VALUES
-            $movieName = $record['MovieName'];
-            $genre = $record['genre'];
-            $itemImage = $record['thumbnailImage'];
-            
-            
-            //CHANGE VALUES TO CURRENT DB
-            echo "<tr>";
-            echo "<td><img src='$itemImage'></td>";
-            echo "<td><h4>$itemName</h4></td>";
-            echo "<td><h4>$itemPrice</h4></td>";
-            
-            //UPDATE VARIABLES TO 
-            echo "<forum method='post'>";
-            echo "<input type='hidden' name='itemName' value='$itemName'>";
-            echo "<td><button class='btn btn-warning'>Add</button></td>";
-            echo "</forum>";
-            
-            echo "<tr>";
-            
-            echo "<forum method='post'>";
-            echo "<input type='hidden' name='itemName' value'$itemName'>";
-            echo "<input type='hidden' name='itemId' value'$itemId'>";
-            echo "<input type='hidden' name='itemImage' value'$itemImage'>";
-            echo "<input type='hidden' name='itemPrice' value'$itemPrice'>";
-            
-            echo "<td><button class='btn btn-warning'>ADD</button></td>";
-            echo "</forum>";
-            
-        }
         echo "</table>";
         }
     }
@@ -138,12 +189,26 @@ function displaySeachResults(){
 
     function findMatches() {
         global $dbConn;
-        global $explained;
-        if($_GET["genre"] == "Explanation") {
-            //code found from https://stackoverflow.com/questions/21226166/php-header-location-redirect-not-working/21229246
-            $explained = "action";
-            
-         echo "<script type='text/javascript'> document.location = 'explanation.php'; </script>";
+        $sql = "";
+       // if($_GET["genre"] == "Explanation") {
+                        //code found from https://stackoverflow.com/questions/21226166/php-header-location-redirect-not-working/21229246
+
+         //echo "<script type='text/javascript'> document.location = 'explanation.php'; </script>";
+         //break;
+        
+        if($_GET['genre'] == "Movies: action"){
+            $sql = "SELECT * FROM movies where name LIKE '%" . $_GET['MovieName'] . "%' AND genre = 'action'";
+        }
+        if($sql != ""){
+            echo "IN HERE!!!!";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($records as $record){
+        echo $record["name"];
+        echo "<br>";
+        }
         }
     }
     
@@ -159,6 +224,7 @@ function displaySeachResults(){
            echo "<h1> " . $record['description'] ." </h1>";
         }
     }
+    
 
     
 
