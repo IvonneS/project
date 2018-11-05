@@ -19,12 +19,16 @@ include 'functions.php';
             <form method = "GET" id="forms">
             <b> Movie Or Video Game: </b><input type="text" name="MovieName" placeholder="name" /> <br />
             <br>
+            <b>Movies</b> <input type="radio" name="searchFor" value="movies" >
+            <b>Video Games</b><input type="radio" name="searchFor" value="video_games" ><br>
+            <br>
             <b> Genre:</b> 
             <select name="genre">
                <option value=" "> Select one </option> 
                <?php
-               categoryDisplayMovie();
-               categoryDisplayGame();
+            //   categoryDisplayMovie();
+            //   categoryDisplayGame();
+               displayGenre();
                ?>
             </select>
             <br><br>
@@ -38,7 +42,12 @@ include 'functions.php';
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>
         <?php
-        findMatches();
+            if(isset($_GET['searchForm'])){
+                echo "<hr>";
+                echo "<div id='output'>";
+                displaySeachResults();
+                echo "</div>";
+            }
         ?>
 
     </body>
