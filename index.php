@@ -12,6 +12,8 @@ include 'functions.php';
     <body id="background1">
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
+                
+                <!--<span class='glyphicon glyphicon-shooping-cart' aria-hidden='true'>-->
                 <li><a href="cart.php">Cart</a></li>
                 <li><a href = "explanation.php">Explanation</a></li>
             </ul>
@@ -35,8 +37,8 @@ include 'functions.php';
             <b>Price:  From: </b> <input type="number" name="priceFrom" size="6"/> 
             <b> To: </b> <input type="number" name="priceTo" size="6"/>
             <br>
-            <b>Low to High Price</b> <input type="radio" name="orderBy" value="LToH" >
-            <b>High to Low Price</b><input type="radio" name="orderBy" value="HToL" ><br>
+            <b>Low to High Price</b> <input  type="radio"  name="orderBy" value="LToH" >
+            <b>High to Low Price</b><input   type="radio"   name="orderBy" value="HToL" ><br>
             <b>Alphabetical Order </b><input type="radio" name="orderBy" value="alphabetic">
             <br><br>
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
@@ -52,5 +54,6 @@ include 'functions.php';
 
     </body>
 </html>
-
-
+<?php
+findMatches();
+?>
