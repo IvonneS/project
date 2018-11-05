@@ -2,6 +2,13 @@
 include 'inc/dbConnection.php';
 $dbConn = startConnection("project2");
 
+function displayCart(){
+    if(isset($_SESSION['cart'])){
+        
+        echo $_SESSION['cart'];
+    }
+}
+//**************************************************************************************************************************
 function displayGenre(){
     global $dbConn;
     
@@ -13,7 +20,7 @@ function displayGenre(){
         echo "<option value='".$record['name']."'>" . $record['name'] . "</option>";
     }
 }
-
+//*****************************************************************************************************************************
 function displaySeachResults(){
         
         global $dbConn;
@@ -131,22 +138,14 @@ function displaySeachResults(){
                     echo "</forum>";
                     
                     echo "<tr>";
-                    
-                    echo "<forum method='post'>";
-                    echo "<input type='hidden' name='itemName' value'$itemName'>";
-                    echo "<input type='hidden' name='itemId' value'$itemId'>";
-                    echo "<input type='hidden' name='itemImage' value'$itemImage'>";
-                    echo "<input type='hidden' name='itemPrice' value'$itemPrice'>";
-                    
-                    //echo "<td><button class='btn btn-warning'>ADD</button></td>";
-                    echo "</forum>";
+
                 }
             }
             
         echo "</table>";
         }
     }
-    
+//**************************************************************************************************************************    
     function explain() {
         global $dbConn;
 
