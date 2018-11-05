@@ -127,7 +127,7 @@ function displaySeachResults(){
                     //UPDATE VARIABLES TO 
                     echo "<forum method='post'>";
                     echo "<input type='hidden' name='itemName' value='$itemName'>";
-                    echo "<td><button class='btn btn-warning'>Add</button></td>";
+                    echo "<td><button id='b1'>Add</button></td>";
                     echo "</forum>";
                     
                     echo "<tr>";
@@ -138,7 +138,7 @@ function displaySeachResults(){
                     echo "<input type='hidden' name='itemImage' value'$itemImage'>";
                     echo "<input type='hidden' name='itemPrice' value'$itemPrice'>";
                     
-                    echo "<td><button class='btn btn-warning'>ADD</button></td>";
+                    //echo "<td><button class='btn btn-warning'>ADD</button></td>";
                     echo "</forum>";
                 }
             }
