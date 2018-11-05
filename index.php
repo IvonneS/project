@@ -13,6 +13,7 @@ include 'functions.php';
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
                 <li><a href="cart.php">Cart</a></li>
+                <li><a href = "explanation.php">Explanation</a></li>
             </ul>
             <br> <br>
             <form method = "GET" id="forms">
@@ -24,9 +25,7 @@ include 'functions.php';
                <?php
                categoryDisplayMovie();
                categoryDisplayGame();
-              // categoryExplain();
                ?>
-               <option>Explanation</option>
             </select>
             <br><br>
             <b>Price:  From: </b> <input type="number" name="priceFrom" size="6"/> 
@@ -38,10 +37,11 @@ include 'functions.php';
             <br><br>
             <input type="submit" name="searchForm" value="SEARCH" id="b1" />
         </form>
+        <?php
+        findMatches();
+        ?>
+
     </body>
 </html>
 
-<?php
-findMatches();
-?>
 
