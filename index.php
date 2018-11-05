@@ -16,20 +16,21 @@ include 'functions.php';
             </ul>
             <br> <br>
             <form method = "GET" id="forms">
-            <b> Movie: </b><input type="text" name="MovieName" placeholder="name or description" /> <br />
+            <b> Movie Or Video Game: </b><input type="text" name="MovieName" placeholder="name" /> <br />
             <br>
             <b> Genre:</b> 
             <select name="genre">
                <option value=" "> Select one </option> 
-               <?php 
+               <?php
                categoryDisplayMovie();
                categoryDisplayGame();
+              // categoryExplain();
                ?>
-            
+               <option>Explanation</option>
             </select>
             <br><br>
-            <b>Price:  From: </b> <input type="text" name="priceFrom" size="6"/> 
-            <b> To: </b> <input type="text" name="priceTo" size="6"/>
+            <b>Price:  From: </b> <input type="number" name="priceFrom" size="6"/> 
+            <b> To: </b> <input type="number" name="priceTo" size="6"/>
             <br>
             <b>Low to High Price</b> <input type="radio" name="orderBy" value="LToH" >
             <b>High to Low Price</b><input type="radio" name="orderBy" value="HToL" ><br>
@@ -39,3 +40,8 @@ include 'functions.php';
         </form>
     </body>
 </html>
+
+<?php
+findMatches();
+?>
+

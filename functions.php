@@ -1,6 +1,8 @@
 <?php
 include 'inc/dbConnection.php';
 $dbConn = startConnection("project2");//put in parentesis database Name
+$explained;
+
 function displayGenre(){
     global $dbConn;
     
@@ -8,13 +10,10 @@ function displayGenre(){
     $stmt = $dbConn->prepare($sql);
     $stmt->execute();
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   
-    
     foreach ($records as $record) {
         echo "<option value='".$record['']."'>" . $record[''] . "</option>";
     }
 }
-
 function displaySeachResults(){
         
         global $dbConn;
@@ -122,8 +121,45 @@ function displaySeachResults(){
         }
     }
     
-
+    function categoryExplain() {
+        global $dbConn;
         
+       $sql = "SELECT DISTINCT name FROM Genre ORDER BY name ASC";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($records as $record){
+           echo "<option value = 'Explanation: ".$record['name']."'> Explanation: " .$record["name"] ."</option>";
+        }
+    }
+    
+
+
+    function findMatches() {
+        global $dbConn;
+        global $explained;
+        if($_GET["genre"] == "Explanation") {
+            //code found from https://stackoverflow.com/questions/21226166/php-header-location-redirect-not-working/21229246
+            $explained = "action";
+            
+         echo "<script type='text/javascript'> document.location = 'explanation.php'; </script>";
+        }
+    }
+    
+    function explain() {
+        global $dbConn;
+
+        $sql = "SELECT description FROM `Genre` ORDER BY name ASC";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($records as $record){
+           echo "<h1> " . $record['description'] ." </h1>";
+        }
+    }
+
     
 
 ?>
