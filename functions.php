@@ -219,11 +219,22 @@ function displaySeachResults(){
         $stmt = $dbConn->prepare($sql);
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
+        echo "<table id = 'explanation_table'>";
+        $i = 0;
+        echo "<tr id = 'explanation_tr'>";
         foreach($records as $record){
-           echo "<h1> " . $record['description'] ." </h1>";
+            echo "<th id = 'explanation_th'>";
+        echo $record['description'];
+        $i++;
+        if($i == 2){
+            $i =0;
+            echo "<tr>";
         }
+         // echo "<h1> " . $record['description'] ." </h1>";
+        }
+        echo "</table>";
     }
+
     
 
     

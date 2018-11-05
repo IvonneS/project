@@ -57,3 +57,18 @@ li a:hover {
     text-align: center;
     margin: auto;
 }
+#explanation_table, #explanation_tr, #explanation_th {
+    border: 3px solid black;
+}
+#genre_explain {
+    text-align: center;
+}
+
+#explain_body{
+        background-image: url("../img/articBackground2.jpg");
+        background-size: 100%
+
+}
+#linkBack {
+    text-align: center;
+}
