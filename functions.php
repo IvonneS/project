@@ -1,6 +1,6 @@
 <?php
 include 'inc/dbConnection.php';
-$dbConn = startConnection("project2");//put in parentesis database Name
+$dbConn = startConnection("project2");
 
 function displayGenre(){
     global $dbConn;
@@ -16,43 +16,48 @@ function displayGenre(){
 function displaySeachResults(){
         
         global $dbConn;
-        
+
         if(isset($_GET['searchForm'])){
+            
+            
             
             echo "<h3>Moives Found: </h3>";
             
             $namedParameters = array();
             
-            $sql = "SELECT * FROM  WHERE 1"; //ADD DATABASE NAME
+            $sql = "SELECT * FROM movies WHERE 1"; 
             
             //Check input fields
             if(!empty($_GET['MovieName'])){
-                $sql .= " AND productName OR productDescription LIKE :MovieName"; //CHANGE SQL SEARCH VALUES
+                $sql .= " AND name OR description LIKE :MovieName";
                 $namedParameters[':MovieName'] = "%" .$_GET['MovieName']. "%";
             }
             
             if(!empty($_GET['genre'])){
-                $sql .= " AND catId = :genre"; //CHANGE SQL SEARCH VALUES
+                $sql .= " AND genre = :genre"; 
                 $namedParameters[':genre'] = $_GET['genre'];
             }
             
             if(!empty($_GET['priceFrom']) && !empty($_GET['priceTo'])){
-                $sql .= " AND price >= :priceFrom"; //CHANGE SQL SEARCH VALUES
-                $sql .= " AND price <= :priceTo"; //CHANGE SQL SEARCH VALUES
+                $sql .= " AND price >= :priceFrom"; 
+                $sql .= " AND price <= :priceTo"; 
                 $namedParameters[':priceFrom'] = $_GET['priceFrom'];
                 $namedParameters[':priceTo'] = $_GET['priceTo'];
             }
             
             if(isset($_GET['orderBy'])){
-                if($_GET['orderBy'] == 'price'){
-                    $sql .= " ORDER BY price"; //CHANGE SQL SEARCH VALUES
+                if($_GET['orderBy'] == 'alphabetic'){
+                    $sql .= " ORDER BY name"; 
                 }
-                else{
-                    $sql .= " ORDER BY productName"; //CHANGE SQL SEARCH VALUES
+                elseif($_GET['orderBy'] == 'LToH') {
+                    $sql .= " ORDER BY price DESC"; 
+                }
+                elseif($_GET['orderBy'] == 'HToL'){
+                    $sql .= " ORDER BY price";
                 }
             }
             
-            $stmt = $db->prepare($sql);
+            $stmt = $dbConn->prepare($sql);
             $stmt->execute($namedParameters);
             $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
@@ -60,10 +65,11 @@ function displaySeachResults(){
             echo "<table class='table'>";
             foreach($records as $record){
             
-            //CHECK DB VALUES
-            $movieName = $record['MovieName'];
+            //Assign values to variables
+            $movieName = $record['name'];
             $genre = $record['genre'];
-            $itemImage = $record['thumbnailImage'];
+            $itemImage = $record['image'];
+            $itemPrice = $record['price'];
             
             
             //CHANGE VALUES TO CURRENT DB
