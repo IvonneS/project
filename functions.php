@@ -4,8 +4,19 @@ $dbConn = startConnection("project2");
 
 function displayCart(){
     if(isset($_SESSION['cart'])){
-        
-        echo $_SESSION['cart'];
+        echo "<table id='out_table' align='center'>";
+         echo "<tr>";
+                echo "<th> Poster</th>";
+                echo "<th> Title </th>";
+                echo "<th> Genre </th>";
+                echo "<th> Price </th>";
+                echo "</tr>";
+        foreach($_SESSION['cart'] as $item){
+            echo "<tr>";
+            echo "<td>$item</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
     }
 }
 //**************************************************************************************************************************
@@ -171,7 +182,7 @@ function displaySeachResults(){
                     //Add item to cart 
                     echo "<forum method='post'>";
                     echo "<input type='hidden' name='itemName' value='$itemName'>";
-                    echo "<td><button id='b1'>Add</button></td>";
+                    echo "<td><button id='b2'>Add</button></td>";
                     echo "</forum>";
                     
                     echo "</tr>";
