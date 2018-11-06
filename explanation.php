@@ -21,11 +21,5 @@ include "functions.php";
         <?php
         explain();
         ?>
-        
-        <center>
-              <a id='linkBack' href = "index.php" > Link to Go Back To Main Page</a>
-        </center>
-   
-
     </body>
 </html>

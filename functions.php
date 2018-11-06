@@ -162,13 +162,22 @@ function displaySeachResults(){
     function explain() {
         global $dbConn;
 
-        $sql = "SELECT description FROM `Genre` ORDER BY name ASC";
+        $sql = "SELECT * FROM `Genre` ORDER BY name ASC";
         $stmt = $dbConn->prepare($sql);
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
+        echo "<table id='out_table' align='center'>";
+        echo "<tr>";
+        echo "<th> Genre </th>";
+        echo "<th> Description  </th>";
+        echo "</tr>";
         foreach($records as $record){
-           echo "<h1> " . $record['description'] ." </h1>";
+        
+            echo "<tr>";    
+            echo "<td> " .$record['name']. " </td>";
+            echo "<td> " .$record['description']. " </td>";
+            echo "</tr>";
         }
     }
 
