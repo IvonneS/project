@@ -26,6 +26,30 @@ function displayGenre(){
     }
 }
 //*****************************************************************************************************************************
+function checkInputs(){
+    
+    $flag = true;
+    
+    //Ensure that at least one field is filled
+    if(($_GET['MovieName'] == "") &&
+       (!isset($_GET['searchFor'])) &&
+       ($_GET['priceFrom'] == "" && $_GET['priceTo'] == "" ) &&
+       ($_GET['genre'] == "")){
+           
+           echo "<h2> ERROR: Please select search criteria </h2>";
+           $flag = false;
+       }
+      
+     //Ensure that price values are correct  
+    if(($_GET['priceFrom'] > $_GET['priceTo']) || ($_GET['priceTo'] < $_GET['priceFrom'])){
+        
+        echo "<h2> ERROR: Invalid price range </h2>";
+        $flag = false;
+    } 
+    
+    return $flag;
+}
+//*****************************************************************************************************************************
 function displaySeachResults(){
         
         global $dbConn;
