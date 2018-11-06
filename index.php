@@ -50,9 +50,11 @@ if (!isset($_SESSION['cart'])){
         </form>
         <?php
             if(isset($_GET['searchForm'])){
-                echo "<div id='output'>";
-                displaySeachResults();
-                echo "</div>";
+                if(checkInputs()){
+                    echo "<div id='output'>";
+                    displaySeachResults();
+                    echo "</div>";
+                }
             }
         ?>
 
