@@ -33,6 +33,7 @@
             <ul>
                         <li><a href='index.php'>Home</a></li>
                         <li><a class="active" href='cart.php'> Cart </a></li>
+                        <li><a href = "explanation.php">Explanation</a></li>
             </ul>
         </div>    
              <h1>WELCOME</h1><br>

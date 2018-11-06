@@ -74,9 +74,7 @@ li a:hover {
     text-align: center;
 }
 #out_table, th, td{
-    border: 1px solid black 
-}
-
-th, td {
+    border: 1px solid black;
+    background-color: #f9f9f9;
     padding: 15px;
 }
