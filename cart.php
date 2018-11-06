@@ -36,7 +36,7 @@
                         <li><a href = "explanation.php">Explanation</a></li>
             </ul>
         </div>    
-             <h1>WELCOME</h1><br>
+             <h1>Shopping Cart</h1><br>
              <?php  
              displayCart();
              ?>
