@@ -15,17 +15,54 @@ function displayCart(){
              
         foreach($_SESSION['cart'] as $item){
             $itemId= $item['id'];
+            $itemName = $item['name'];
+            $itemGenre = $item['genre'];
+            $itemImage = $item['img'];
+            $itemPrice = $item['price'];
             echo '<tr>';
             //Display data for item
-            echo "<td><img src='" . $item['image'] . "'></td>";
-            echo "<td><h4>". $item['name'] ."</h4></td>";
-            echo "<td><h4>" . $item['genre'] . "</h4></td>";
-            echo "<td><h4>$" . $item['price'] . "</h4></td>";
+            echo "<td><img src='" . $itemImage. "'></td>";
+            echo "<td><h4>". $itemName."</h4></td>";
+            echo "<td><h4>" . $itemGenre . "</h4></td>";
+            echo "<td><h4>$" . $itemPrice . "</h4></td>";
             echo "</tr>";
+        }
         echo "</table>";
-    }
  }
 }
+
+foreach($records as $record){
+                
+                    //Assign values to variables
+                    $itemName = $record['name'];
+                    $genre = $record['genre'];
+                    $itemImage = $record['image'];
+                    $itemPrice = $record['price'];
+
+                    
+                    //Display Items
+                    echo "<tr>";
+                    echo "<td><img src='$itemImage'></td>";
+                    echo "<td><h4>$itemName</h4></td>";
+                    echo "<td><h4> $genre </h4></td>";
+                    echo "<td><h4>$itemPrice</h4></td>";
+                    
+foreach($records as $record){
+                
+                    //Assign values to variables
+                    $itemName = $record['name'];
+                    $genre = $record['genre'];
+                    $itemImage = $record['image'];
+                    $itemPrice = $record['price'];
+
+                    
+                    //Display Items
+                    echo "<tr>";
+                    echo "<td><img src='$itemImage'></td>";
+                    echo "<td><h4>$itemName</h4></td>";
+                    echo "<td><h4> $genre </h4></td>";
+                    echo "<td><h4>$itemPrice</h4></td>";
+                    
 //**************************************************************************************************************************
 function displayGenre(){
     global $dbConn;
