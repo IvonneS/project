@@ -2,6 +2,13 @@
 include 'inc/dbConnection.php';
 $dbConn = startConnection("project2");
 
+function displayCart(){
+    if(isset($_SESSION['cart'])){
+        
+        echo $_SESSION['cart'];
+    }
+}
+//**************************************************************************************************************************
 function displayGenre(){
     global $dbConn;
     
@@ -18,7 +25,7 @@ function displayGenre(){
         echo ">" .$record['name']. "</option><br />";
     }
 }
-
+//*****************************************************************************************************************************
 function displaySeachResults(){
         
         global $dbConn;
@@ -27,7 +34,7 @@ function displaySeachResults(){
             
             if($_GET['searchFor'] == 'movies'){
             
-                echo "<h3>Movies Found: </h3>";
+                echo "<h3>Moives Found: </h3>";
                 
                 $namedParameters = array();
                 
@@ -56,10 +63,10 @@ function displaySeachResults(){
                         $sql .= " ORDER BY name"; 
                     }
                     elseif($_GET['orderBy'] == 'LToH') {
-                        $sql .= " ORDER BY price DESC"; 
+                        $sql .= " ORDER BY price ASC"; 
                     }
                     elseif($_GET['orderBy'] == 'HToL'){
-                        $sql .= " ORDER BY price";
+                        $sql .= " ORDER BY price DESC";
                     }
                 }
                 
@@ -134,24 +141,24 @@ function displaySeachResults(){
                     echo "<tr>";
                     echo "<td><img src='$itemImage'></td>";
                     echo "<td><h4>$itemName</h4></td>";
-                    echo "<td><h4>$genre</h4></td>";
+                    echo "<td><h4> $genre </h4></td>";
                     echo "<td><h4>$itemPrice</h4></td>";
                     
-                    //Button to add to cart
+                    //Add item to cart 
                     echo "<forum method='post'>";
                     echo "<input type='hidden' name='itemName' value='$itemName'>";
-                    echo "<input type='hidden' name='itemImage' value='$itemImage'>";
-                    echo "<input type='hidden' name='itemPrice' value='$itemPrice'>";
-                    echo "<td><button class='btn btn-warning'>ADD</button></td>";
+                    echo "<td><button id='b1'>Add</button></td>";
                     echo "</forum>";
+                    
                     echo "</tr>";
+
                 }
             }
             
         echo "</table>";
         }
     }
-    
+//**************************************************************************************************************************    
     function explain() {
         global $dbConn;
 
@@ -159,19 +166,11 @@ function displaySeachResults(){
         $stmt = $dbConn->prepare($sql);
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo "<table id = 'explanation_table'>";
-        $i = 0;
-        echo "<tr id = 'explanation_tr'>";
+        
         foreach($records as $record){
-            echo "<th id = 'explanation_th'>";
-        echo $record['description'];
-        $i++;
-        if($i == 2){
-            $i =0;
-            echo "<tr>";
+           echo "<h1> " . $record['description'] ." </h1>";
         }
-         // echo "<h1> " . $record['description'] ." </h1>";
-        }
-        echo "</table>";
     }
+
 ?>
+

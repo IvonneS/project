@@ -1,7 +1,16 @@
 <?php
 session_start();
 include 'functions.php';
+
+if(isset($_POST['itemName'])){
+    $_SESSION['cart'] = $_POST['itemName'];
+}
+
+if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+}
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,3 +58,4 @@ include 'functions.php';
 
     </body>
 </html>
+
