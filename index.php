@@ -3,7 +3,13 @@ session_start();
 include 'functions.php';
 
 if(isset($_POST['itemName'])){
-    array_push($_SESSION['cart'], $_POST['itemName']);
+     $newItem= array();
+        $newItem['name']= $_POST['itemName'];
+        $newItem['price']= $_POST['itemPrice'];
+        $newItem['img']= $_POST['itemImg'];        
+        $newItem['id']= $_POST['itemId'];
+        $newItem['genre']= $_POST['itemGenre'];
+        
 }
 
 if (!isset($_SESSION['cart'])){

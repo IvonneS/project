@@ -10,14 +10,21 @@ function displayCart(){
                 echo "<th> Title </th>";
                 echo "<th> Genre </th>";
                 echo "<th> Price </th>";
+                echo "<th> Quantity </th>";
                 echo "</tr>";
+             
         foreach($_SESSION['cart'] as $item){
-            echo "<tr>";
-            echo "<td>$item</td>";
+            $itemId= $item['id'];
+            echo '<tr>';
+            //Display data for item
+            echo "<td><img src='" . $item['image'] . "'></td>";
+            echo "<td><h4>". $item['name'] ."</h4></td>";
+            echo "<td><h4>" . $item['genre'] . "</h4></td>";
+            echo "<td><h4>$" . $item['price'] . "</h4></td>";
             echo "</tr>";
-        }
         echo "</table>";
     }
+ }
 }
 //**************************************************************************************************************************
 function displayGenre(){
