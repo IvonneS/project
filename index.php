@@ -35,16 +35,8 @@ if (!isset($_SESSION['cart'])){
             <br>
             <b> Genre:</b> 
             <select name="genre">
-<<<<<<< HEAD
-               <option value=" "> Select one </option> 
-               <?php
-           
-               displayGenre();
-               ?>
-=======
                <option value=""> Select one </option> 
                <?= displayGenre(); ?>
->>>>>>> refs/remotes/origin/master
             </select>
             <br><br>
             <b>Price:  From: </b> <input type="number" name="priceFrom" size="6" value = '<?php echo ($_GET['priceFrom']) ?  $_GET['priceFrom']  : ''; ?>'/> 
@@ -66,7 +58,4 @@ if (!isset($_SESSION['cart'])){
 
     </body>
 </html>
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
