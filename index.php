@@ -28,8 +28,7 @@ include 'functions.php';
             <select name="genre">
                <option value=" "> Select one </option> 
                <?php
-            //   categoryDisplayMovie();
-            //   categoryDisplayGame();
+           
                displayGenre();
                ?>
             </select>
@@ -54,6 +53,3 @@ include 'functions.php';
 
     </body>
 </html>
-<?php
-findMatches();
-?>
