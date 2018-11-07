@@ -30,7 +30,7 @@ if (isset($_POST['itemName'])) {
     $newItem['description'] = $_POST['itemDescription'];
 
     $found = false;
-    echo $_POST['itemName'];
+    //echo $_POST['itemName'];
 
     
  //   array_push($_SESSION['cart'], $newItem);
