@@ -1,20 +1,55 @@
 <?php
 session_start();
+//session_destroy();
 include 'functions.php';
-
-if(isset($_POST['itemName'])){
-    array_push($_SESSION['cart'], $_POST['itemName']);
-}
 
 if (!isset($_SESSION['cart'])){
         $_SESSION['cart'] = array();
 }
+
+if (isset($_POST['itemName'])) {
+    
+    $newItem = array();
+    $newItem['name'] = $_POST['itemName'];
+    $newItem['genre'] = $_POST['genre'];
+    $newItem['price'] = $_POST['itemPrice'];
+    $newItem['image'] = $_POST['itemImage'];
+    $newItem['id'] = $_POST['itemId'];
+    $found = false;
+    echo $_POST['itemName'];
+
+    
+ //   array_push($_SESSION['cart'], $newItem);
+
+
+foreach($_SESSION['cart'] as &$item) {
+    if($newItem['id'] == $item['id']) {
+        $item['quantity'] += 1;
+        echo "MATCH FOUND";
+        $found = true;
+    }
+}
+
+if($found != true) {
+    echo "PUSHING";
+    $newItem['quantity'] = 1;
+    array_push($_SESSION['cart'], $newItem);
+}
+
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>Products Page</title>
          
     </head>
