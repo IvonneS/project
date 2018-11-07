@@ -29,6 +29,14 @@
     }
 }
 
+  if (isset($_POST['removeAll'])) {
+    foreach($_SESSION['cart'] as $itemKey => $item) {
+        
+            unset($_SESSION['cart'][$itemKey]);
+        }
+    }
+
+
 if(isset($_POST['itemId'])){
     foreach($_SESSION['cart'] as &$item) {
         if($item['id'] == $_POST['itemId']) {

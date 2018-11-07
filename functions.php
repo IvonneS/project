@@ -259,5 +259,9 @@ function displaySeachResults(){
     }
     
     echo "You owe: $" . $totalPrice;
+    echo "<form method='post'>";
+            echo "<input type='hidden' name='removeAll' value='$itemId'>";
+            echo "<td><button class='btn btn-danger'>Remove All</button></td>";
+            echo"</form>";
     }
 ?>
