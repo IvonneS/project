@@ -11,6 +11,7 @@ if(isset($_POST['itemName'])){
         $newItem['img']= $_POST['itemImg'];        
         $newItem['id']= $_POST['itemId'];
         $newItem['genre']= $_POST['itemGenre'];
+        $newItem['description'] = $_POST['itemDescription'];
         
 }
 
@@ -26,6 +27,8 @@ if (isset($_POST['itemName'])) {
     $newItem['price'] = $_POST['itemPrice'];
     $newItem['image'] = $_POST['itemImage'];
     $newItem['id'] = $_POST['itemId'];
+    $newItem['description'] = $_POST['itemDescription'];
+
     $found = false;
     echo $_POST['itemName'];
 
@@ -36,13 +39,13 @@ if (isset($_POST['itemName'])) {
 foreach($_SESSION['cart'] as &$item) {
     if($newItem['id'] == $item['id']) {
         $item['quantity'] += 1;
-        echo "MATCH FOUND";
+       // echo "MATCH FOUND";
         $found = true;
     }
 }
 
 if($found != true) {
-    echo "PUSHING";
+   // echo "PUSHING";
     $newItem['quantity'] = 1;
     array_push($_SESSION['cart'], $newItem);
 }

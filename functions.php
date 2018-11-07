@@ -156,12 +156,14 @@ function displaySeachResults(){
                     $itemImage = $record['image'];
                     $itemPrice = $record['price'];
                     $itemId = $record['id'];
-
+                    $itemDescription = $record['description'];
                     
                     //Display Items
                     echo "<tr>";
                     echo "<td><img src='$itemImage'></td>";
-                    echo "<td><h4>$itemName</h4></td>";
+                    echo "<td>[<a href='info.php?itemId=".$record['id']."'>".$record['name']."</a>]</td>  ";
+
+                    //echo "<td><h4>$itemName</h4></td>";
                     echo "<td><h4> $genre </h4></td>";
                     echo "<td><h4>$itemPrice</h4></td>";
                     
@@ -172,6 +174,8 @@ function displaySeachResults(){
                     echo "<input type = 'hidden' name= 'itemImage' value='$itemImage'>";
                     echo "<input type = 'hidden' name= 'itemPrice' value='$itemPrice'>";
                     echo "<input type = 'hidden' name= 'genre' value='$genre'>";
+                    echo "<input type = 'hidden' name= 'description' value='$itemDescription'>";
+
 
                     if($_POST['itemId'] == $itemId) {
                         echo "HERE";
@@ -230,6 +234,7 @@ function displaySeachResults(){
             $itemImage = $item['image'];
             $itemId = $item['id'];
             $itemQuantity = $item['quantity'];
+            $itemDescription = $item['description'];
             $totalPrice += ($itemPrice * $itemQuantity) ;
             
             echo"<tr>";
@@ -263,5 +268,22 @@ function displaySeachResults(){
             echo "<input type='hidden' name='removeAll' value='$itemId'>";
             echo "<td><button class='btn btn-danger'>Remove All</button></td>";
             echo"</form>";
+    }
+    
+    function showInfo($itemId) {
+        global $dbConn;
+        $sql = "";
+        //echo $itemId;
+        if($itemId < 100){
+            $sql = "SELECT * from movies WHERE id = $itemId";
+        }
+        else {
+            $sql = "SELECT * from video_games WHERE id = $itemId";
+        }
+    $stmt = $dbConn->prepare($sql);
+    $stmt->execute();
+    $record = $stmt->fetch(PDO::FETCH_ASSOC); //we're expecting multiple records   
+    
+    return $record;
     }
 ?>
