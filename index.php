@@ -3,8 +3,7 @@ session_start();
 //session_destroy();
 include 'functions.php';
 
-<<<<<<< HEAD
-=======
+
 if(isset($_POST['itemName'])){
      $newItem= array();
         $newItem['name']= $_POST['itemName'];
@@ -15,7 +14,6 @@ if(isset($_POST['itemName'])){
         
 }
 
->>>>>>> ceeb16459e988df7e600547313f8548a17c4df76
 if (!isset($_SESSION['cart'])){
         $_SESSION['cart'] = array();
 }

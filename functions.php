@@ -2,71 +2,8 @@
 include 'inc/dbConnection.php';
 $dbConn = startConnection("project2");
 
-/*function displayCart(){
-    if(isset($_SESSION['cart'])){
-        echo "<table id='out_table' align='center'>";
-         echo "<tr>";
-                echo "<th> Poster</th>";
-                echo "<th> Title </th>";
-                echo "<th> Genre </th>";
-                echo "<th> Price </th>";
-                echo "<th> Quantity </th>";
-                echo "</tr>";
-             
-        foreach($_SESSION['cart'] as $item){
-            $itemId= $item['id'];
-            $itemName = $item['name'];
-            $itemGenre = $item['genre'];
-            $itemImage = $item['img'];
-            $itemPrice = $item['price'];
-            echo '<tr>';
-            //Display data for item
-            echo "<td><img src='" . $itemImage. "'></td>";
-            echo "<td><h4>". $itemName."</h4></td>";
-            echo "<td><h4>" . $itemGenre . "</h4></td>";
-            echo "<td><h4>$" . $itemPrice . "</h4></td>";
-            echo "</tr>";
-        }
-        echo "</table>";
- }
-}
-
-<<<<<<< HEAD
-*/
-=======
-foreach($records as $record){
-                
-                    //Assign values to variables
-                    $itemName = $record['name'];
-                    $genre = $record['genre'];
-                    $itemImage = $record['image'];
-                    $itemPrice = $record['price'];
 
                     
-                    //Display Items
-                    echo "<tr>";
-                    echo "<td><img src='$itemImage'></td>";
-                    echo "<td><h4>$itemName</h4></td>";
-                    echo "<td><h4> $genre </h4></td>";
-                    echo "<td><h4>$itemPrice</h4></td>";
-                    
-foreach($records as $record){
-                
-                    //Assign values to variables
-                    $itemName = $record['name'];
-                    $genre = $record['genre'];
-                    $itemImage = $record['image'];
-                    $itemPrice = $record['price'];
-
-                    
-                    //Display Items
-                    echo "<tr>";
-                    echo "<td><img src='$itemImage'></td>";
-                    echo "<td><h4>$itemName</h4></td>";
-                    echo "<td><h4> $genre </h4></td>";
-                    echo "<td><h4>$itemPrice</h4></td>";
-                    
->>>>>>> ceeb16459e988df7e600547313f8548a17c4df76
 //**************************************************************************************************************************
 function displayGenre(){
     global $dbConn;
@@ -323,5 +260,4 @@ function displaySeachResults(){
     
     echo "You owe: $" . $totalPrice;
     }
-
 ?>
