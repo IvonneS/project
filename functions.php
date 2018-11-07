@@ -160,7 +160,7 @@ function displaySeachResults(){
                     
                     //Display Items
                     echo "<tr>";
-                    echo "<td><img src='$itemImage'></td>";
+                    echo "<td><a href= 'info.php?itemId=".$record['id']."'><img src='$itemImage'></td>";
                     echo "<td><a href='info.php?itemId=".$record['id']."'>".$record['name']."</a></td>  ";
 
                     //echo "<td><h4>$itemName</h4></td>";
