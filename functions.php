@@ -140,7 +140,7 @@ function displaySeachResults(){
             
             if(isset($_GET['searchFor'])){
                 //Output results
-                echo "<table id='out_table' align='center'>";
+                echo "<table class='table' align='center'>";
                 echo "<tr>";
                 echo "<th> Poster</th>";
                 echo "<th> Title </th>";
@@ -165,7 +165,7 @@ function displaySeachResults(){
 
                     //echo "<td><h4>$itemName</h4></td>";
                     echo "<td><h4> $genre </h4></td>";
-                    echo "<td><h4>$itemPrice</h4></td>";
+                    echo "<td><h4>$$itemPrice</h4></td>";
                     
                     //Add item to cart 
                     echo "<form method='post'>";
@@ -227,7 +227,7 @@ function displaySeachResults(){
     function displayOurCart() {
          if (isset($_SESSION['cart'])) {
              $totalPrice = 0;
-        echo "<table class ='table'>";
+        echo "<table class ='table' align='center'>";
         foreach ($_SESSION['cart'] as $item) {
             $itemName = $item['name'];
             $itemPrice = $item['price'];
