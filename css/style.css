@@ -96,3 +96,11 @@ h2 {
     color: red;
     text-align: center;
 }
+
+#info_body{
+    background-image: url("../img/ocean.jpg");
+    background-size: 100%;
+    color: white;
+    text-align: center;
+    
+}

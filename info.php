@@ -1,11 +1,10 @@
 <?php
 session_start();
-
 //include 'inc/dbConnection.php';
 //$dbConn = startConnection("project2");
 include 'functions.php';
-//validateSession();
 
+echo $_POST['itemId'];
 if (isset($_GET['itemId'])) {
 
   $itemInfo = showInfo($_GET['itemId']);    
@@ -19,13 +18,15 @@ if (isset($_GET['itemId'])) {
 <!DOCTYPE html>
 <html>
     <head>
+                <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
         <title> Product Info </title>
     </head>
-    <body>
+    <body id = 'info_body'>
     
     <h3><?=$itemInfo['name']?></h3>
      <?=$itemInfo['description']?><br>
-     <img src='<?=$itemInfo['image']?>' height='75'/>
+     <img src='<?=$itemInfo['image']?>' height='200'/>
  
     </body>
 </html>
